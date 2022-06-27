@@ -30,13 +30,11 @@ function App() {
     <Box sx={{ margin: "5rem" }}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <form>
             <Stack spacing={1.5}>
               <TextField onChange={(e) => setSessionData(e.target.value)} variant="outlined" label={"Start/Stop Session"} />
               <Button onClick={() => initializeSession(sessionData)} variant="outlined">Start Session</Button>
               <TextField label={"Return String from Backend for addon"} />
             </Stack>
-          </form>
         </Grid>
         <Grid item xs={4}>
           <Stack spacing={1.5}>
