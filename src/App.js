@@ -2,42 +2,28 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Box, Grid, Stack, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import {AddonInit} from './components/addonInit/AddonInit';
+import AppContext from './contexts/AppContext';
 
 function App() {
-  const API = 'http://localhost:8080'
+  const API = "http://localhost:8080";
 
   const [sessionData, setSessionData] = useState({});
-  const [copyState, setCopyState] = useState("");
-  const [addonInit, setAddonInit] = useState("");
+
+
   const [instanceName, setInstanceName] = useState("");
   const [activeSession, setActiveSession] = useState([]);
 
-
-
-
-  function getInitString(){
-
-    fetch(`${API}/session/addoninit`,{
-      method: "GET"
+  function getActiveSessions() {
+    fetch(`http://localhost:8080/session`, {
+      method: "GET",
     })
-    .then(response => response.json())
-    .then(data => setAddonInit(data))
-    .catch(err => console.log(err))
-  }
-
-  function getActiveSessions(){
-
-    fetch(`http://localhost:8080/session`,{
-      method: "GET"
-    })
-    .then((response) => response.json())
-    .then((data) => setActiveSession(data))
-    .catch((err) => console.log(err))
+      .then((response) => response.json())
+      .then((data) => setActiveSession(data))
+      .catch((err) => console.log(err));
   }
 
   function initializeSession(sessionData, instanceName) {
-
-
     let body = { sessionData, action: "CREATE", sessionName: "new" };
 
     body = JSON.stringify(body);
@@ -50,7 +36,7 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setAddonInit(data);
+
       })
       .catch((err) => console.log(err));
   }
@@ -68,18 +54,17 @@ function App() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setAddonInit(data);
       })
       .catch((err) => console.log(err));
   }
 
-  function copyText(e) {
-    navigator.clipboard.writeText(e.target.value);
-    setCopyState("Copied to Clipboard!");
-    setTimeout(() => setCopyState(""), 5000);
+  let contextObj = {
+    API
+
   }
 
   return (
+    <AppContext.Provider value={contextObj}>
     <Box sx={{ margin: "5rem" }}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
@@ -99,14 +84,7 @@ function App() {
             >
               Start Session
             </Button>
-            <TextField
-              disabled
-              onClick={(e) => copyText(e)}
-              label={"Click to Copy"}
-              value={addonInit}
-            />
-            <Button onClick={() => getInitString()}>Update AddonInit String</Button>
-            <Typography variant="caption">{copyState}</Typography>
+            <AddonInit/>
           </Stack>
         </Grid>
         <Grid item xs={4}>
@@ -124,9 +102,12 @@ function App() {
           </Stack>
         </Grid>
       </Grid>
-      <Typography variant="body1">{activeSession.map(session => session.name)}</Typography>
+      <Typography variant="body1">
+        {activeSession.map((session) => session.name)}
+      </Typography>
       <Button onClick={() => getActiveSessions()}>Get Active Sessions</Button>
     </Box>
+    </AppContext.Provider>
   );
 }
 
