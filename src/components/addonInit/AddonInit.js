@@ -3,9 +3,7 @@ import AppContext from '../../contexts/AppContext'
 import {Button, TextField, Typography } from "@mui/material";
 
 
-
-
-export function AddonInit(props) {
+export default function AddonInit(props) {
   let {API} = useContext(AppContext);
   const [addonInit, setAddonInit] = useState("");
   const [copyState, setCopyState] = useState("");

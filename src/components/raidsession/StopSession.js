@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AppContext from '../../contexts/AppContext';
-import {Button, TextField} from "@mui/material"
+import {Button} from "@mui/material"
 import SessionSelect from './SessionSelect'
 
 export default function StopSession() {

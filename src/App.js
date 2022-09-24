@@ -1,49 +1,49 @@
-import logo from "./DB_LOGO.svg";
 import "./App.css";
-import { Box, Grid, Stack, Button, TextField, Typography } from "@mui/material";
+import FillerDisplay from './displays/FillerDisplay'
 import { useState } from "react";
-import {AddonInit} from './components/addonInit/AddonInit';
 import AppContext from './contexts/AppContext';
-import StartSession from './components/raidsession/StartSession'
-import AddItem from './components/raidsession/AddItem'
-import StopSession from './components/raidsession/StopSession'
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function App() {
   const API = 'http://localhost:8080'
   const PROD ="http://52.20.246.180:8080";
+  const navigate = useNavigate;
 
   const [session, setSession] = useState('');
+
+
+  function NoMatch() {
+
+    const linkStyle = {
+      color: '#61dafb',
+      margin: '1em'
+    }
+    return (
+      <div className="App-header">
+        <h2>You must be lost!</h2>
+        <p>
+          <Link style={linkStyle} to="/">Go to the home page</Link>
+        </p>
+      </div>
+    )
+  }
 
   let contextObj = {
     API,
     session,
-    setSession
+    setSession,
+    navigate
 
   }
 
   return (
     <AppContext.Provider value={contextObj}>
-    <Box sx={{ margin: "5rem" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} xl={12}><Box sx={{width:400,height:200, margin:'auto'}}><img src={logo} alt="Dawnbreaker" /></Box></Grid>
-        <Grid item xs={4}>
-          <Stack spacing={1.5}>
-            <StartSession/>
-            <AddonInit/>
-          </Stack>
-        </Grid>
-        <Grid item xs={4}>
-          <Stack spacing={1.5}>
-          <AddItem/>
-          </Stack>
-        </Grid>
-        <Grid item xs={4}>
-          <Stack spacing={1.5}>
-          <StopSession/>
-          </Stack>
-        </Grid>
-      </Grid>
-    </Box>
+      <Routes>
+        <Route path='/' element={<FillerDisplay/>}/>
+        {/* <Route path='/sessions' element={}/> */}
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+
     </AppContext.Provider>
   );
 }
