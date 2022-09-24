@@ -6,7 +6,7 @@ import {AddonInit} from './components/addonInit/AddonInit';
 import AppContext from './contexts/AppContext';
 
 function App() {
-  const API = process.env.API ||"http://127.0.0.1:8080";
+  const API = process.env.API ||"http://localhost:8080";
 
   const [sessionData, setSessionData] = useState({});
 
@@ -15,7 +15,7 @@ function App() {
   const [activeSession, setActiveSession] = useState([]);
 
   function getActiveSessions() {
-    fetch(`http://localhost:8080/session`, {
+    fetch(`${API}/session`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -27,7 +27,7 @@ function App() {
     let body = { sessionData, action: "CREATE", sessionName: "new" };
 
     body = JSON.stringify(body);
-    fetch(`http://localhost:8080/session`, {
+    fetch(`${API}/session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,9 +35,6 @@ function App() {
       body,
     })
       .then((response) => response.json())
-      .then((data) => {
-
-      })
       .catch((err) => console.log(err));
   }
 
@@ -45,7 +42,7 @@ function App() {
     let body = { action: "CLOSE", sessionName };
 
     body = JSON.stringify(body);
-    fetch(`http://localhost:8080/session`, {
+    fetch(`${API}/session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
