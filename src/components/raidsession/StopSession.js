@@ -1,12 +1,13 @@
 import { useContext } from "react";
 import AppContext from '../../contexts/AppContext';
 import {Button, TextField} from "@mui/material"
+import SessionSelect from './SessionSelect'
 
 export default function StopSession() {
-  let {API} = useContext(AppContext);
+  let {API, session, setSession} = useContext(AppContext);
 
 
-  function endSession(sessionName = "new") {
+  function endSession(sessionName = session) {
     let body = { action: "CLOSE", sessionName };
 
     body = JSON.stringify(body);
@@ -18,13 +19,15 @@ export default function StopSession() {
       body,
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
+
       })
       .catch((err) => console.log(err));
+    setSession('')
   }
   return (
     <>
-      <TextField variant="outlined" label={"Session Name"} />
+      <SessionSelect/>
       <Button onClick={() => endSession()} variant="outlined">
         Stop Session
       </Button>

@@ -12,30 +12,18 @@ function App() {
   const API = 'http://localhost:8080'
   const PROD ="http://52.20.246.180:8080";
 
-  const [activeSession, setActiveSession] = useState([]);
-
-  function getActiveSessions() {
-    fetch(`${API}/session`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => setActiveSession(data))
-      .catch((err) => console.log(err));
-  }
-
-
-
-
+  const [session, setSession] = useState('');
 
   let contextObj = {
-    API
+    API,
+    session,
+    setSession
 
   }
 
   return (
     <AppContext.Provider value={contextObj}>
     <Box sx={{ margin: "5rem" }}>
-
       <Grid container spacing={2}>
         <Grid item xs={12} xl={12}><Box sx={{width:400,height:200, margin:'auto'}}><img src={logo} alt="Dawnbreaker" /></Box></Grid>
         <Grid item xs={4}>
@@ -55,10 +43,6 @@ function App() {
           </Stack>
         </Grid>
       </Grid>
-      <Typography variant="body1">
-        {activeSession.map((session) => session.name)}
-      </Typography>
-      <Button onClick={() => getActiveSessions()}>Get Active Sessions</Button>
     </Box>
     </AppContext.Provider>
   );

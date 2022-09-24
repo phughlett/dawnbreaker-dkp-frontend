@@ -6,12 +6,13 @@ export default function StartSession() {
 
   const [sessionData, setSessionData] = useState({});
   const [instanceName, setInstanceName] = useState("");
-  let {API} = useContext(AppContext);
+  let {API, setSession} = useContext(AppContext);
 
-  function initializeSession(sessionData, instanceName) {
-    let body = { sessionData, action: "CREATE", sessionName: "new" };
+  function initializeSession(sessionData, sessionName = instanceName) {
+    let body = { sessionData, action: "CREATE", sessionName};
 
     body = JSON.stringify(body);
+    console.log(body)
     fetch(`${API}/session`, {
       method: "POST",
       headers: {
@@ -20,18 +21,22 @@ export default function StartSession() {
       body,
     })
       .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        setSession(sessionName)
+      })
       .catch((err) => console.log(err));
   }
   return (
     <>
       <TextField
         onChange={(e) => setInstanceName(e.target.value)}
-        label={"Instance"}
+        label={"Session Name"}
       />
       <TextField
         onChange={(e) => setSessionData(e.target.value)}
         variant="outlined"
-        label={"Start/Stop Session"}
+        label={"Start Init String"}
       />
       <Button onClick={() => initializeSession(sessionData)} variant="outlined">
         Start Session
