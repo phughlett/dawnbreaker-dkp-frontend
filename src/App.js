@@ -6,7 +6,7 @@ import {AddonInit} from './components/addonInit/AddonInit';
 import AppContext from './contexts/AppContext';
 
 function App() {
-  const API = process.env.API ||"http://localhost:8080";
+  const API = process.env.API ||"http://52.20.246.180:8080";
 
   const [sessionData, setSessionData] = useState({});
 
