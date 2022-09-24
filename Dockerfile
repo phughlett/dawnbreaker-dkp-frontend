@@ -1,4 +1,4 @@
-FROM node:alpine as build
+FROM node:alpine
 
 ARG API
 ENV API $API
@@ -8,12 +8,15 @@ WORKDIR /app
 COPY . /app
 
 RUN npm install
-RUN npm run build
+EXPOSE 3000
+CMD ["npm", "start"]
+
 
 #production
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# RUN npm run build
+# FROM nginx:stable-alpine
+# COPY --from=build /app/build /usr/share/nginx/html
+# EXPOSE 80
+# CMD ["nginx", "-g", "daemon off;"]
 
 

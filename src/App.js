@@ -1,17 +1,17 @@
-import logo from "./logo.svg";
+import logo from "./DB_LOGO.svg";
 import "./App.css";
 import { Box, Grid, Stack, Button, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import {AddonInit} from './components/addonInit/AddonInit';
 import AppContext from './contexts/AppContext';
+import StartSession from './components/raidsession/StartSession'
+import AddItem from './components/raidsession/AddItem'
+import StopSession from './components/raidsession/StopSession'
 
 function App() {
-  const API = process.env.API ||"http://52.20.246.180:8080";
+  const API = 'http://localhost:8080'
+  const PROD ="http://52.20.246.180:8080";
 
-  const [sessionData, setSessionData] = useState({});
-
-
-  const [instanceName, setInstanceName] = useState("");
   const [activeSession, setActiveSession] = useState([]);
 
   function getActiveSessions() {
@@ -23,37 +23,9 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  function initializeSession(sessionData, instanceName) {
-    let body = { sessionData, action: "CREATE", sessionName: "new" };
 
-    body = JSON.stringify(body);
-    fetch(`${API}/session`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body,
-    })
-      .then((response) => response.json())
-      .catch((err) => console.log(err));
-  }
 
-  function endSession(sessionName = "new") {
-    let body = { action: "CLOSE", sessionName };
 
-    body = JSON.stringify(body);
-    fetch(`${API}/session`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-      })
-      .catch((err) => console.log(err));
-  }
 
   let contextObj = {
     API
@@ -63,39 +35,23 @@ function App() {
   return (
     <AppContext.Provider value={contextObj}>
     <Box sx={{ margin: "5rem" }}>
+
       <Grid container spacing={2}>
+        <Grid item xs={12} xl={12}><Box sx={{width:400,height:200, margin:'auto'}}><img src={logo} alt="Dawnbreaker" /></Box></Grid>
         <Grid item xs={4}>
           <Stack spacing={1.5}>
-            <TextField
-              onChange={(e) => setInstanceName(e.target.value)}
-              label={"Instance"}
-            />
-            <TextField
-              onChange={(e) => setSessionData(e.target.value)}
-              variant="outlined"
-              label={"Start/Stop Session"}
-            />
-            <Button
-              onClick={() => initializeSession(sessionData)}
-              variant="outlined"
-            >
-              Start Session
-            </Button>
+            <StartSession/>
             <AddonInit/>
           </Stack>
         </Grid>
         <Grid item xs={4}>
           <Stack spacing={1.5}>
-            <TextField variant="outlined" label={"Add Item to Session"} />
-            <Button variant="outlined">Add Item</Button>
+          <AddItem/>
           </Stack>
         </Grid>
         <Grid item xs={4}>
           <Stack spacing={1.5}>
-            <TextField variant="outlined" label={"Session Name"} />
-            <Button onClick={() => endSession()} variant="outlined">
-              Stop Session
-            </Button>
+          <StopSession/>
           </Stack>
         </Grid>
       </Grid>
