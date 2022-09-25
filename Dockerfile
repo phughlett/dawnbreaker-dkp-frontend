@@ -16,9 +16,11 @@ RUN npm install
 RUN npm run build
 FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY cert.pem /etc/nginx/ssl/
+COPY key.pem /etc/nginx/ssl/
 COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
-CMD ["apk", "add", "bash"]
+# CMD ["apk", "add", "bash"]
 # CMD ["nginx", "-g", "daemon off;"]
 
 
