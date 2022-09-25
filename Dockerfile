@@ -8,8 +8,10 @@ WORKDIR /app
 COPY . /app
 
 RUN npm install
+RUN npm build
+RUN npm install -g serve
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["serve","-s", "build"]
 
 
 # production
