@@ -6,7 +6,7 @@ app.use(express.static('./build'))
 
 
 app.get('/*', function(req,res) {
-  res.sendFile('./build/index.html');
+  res.sendFile('/app/build/index.html');
 });
 
 app.listen(80, () =>{
