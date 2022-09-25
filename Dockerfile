@@ -15,7 +15,7 @@ RUN npm install
 # production
 RUN npm run build
 FROM nginx:alpine
-COPY conf.d /etc/nginx/conf.d
+COPY conf.d /etc/nginx/default.conf
 COPY cert.pem /etc/nginx/ssl/
 COPY key.pem /etc/nginx/ssl/
 COPY --from=build /app/build /usr/share/nginx/html
