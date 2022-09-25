@@ -8,6 +8,8 @@ server {
 
     # . . . other code
     location /{
+      root /usr/share/nginx/html;
+      index index.html;
       try_files $uri /index.html;
     }
 
