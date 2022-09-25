@@ -20,6 +20,6 @@ app.get('/*', function(req,res) {
 
 var server = https.createServer(options, app);
 
-server.listen(443, () =>{
- console.log('Listening on 443')
+server.listen(80, () =>{
+ console.log('Listening on 80')
 })
