@@ -1,15 +1,38 @@
 import "./App.css";
 import FillerDisplay from './displays/FillerDisplay'
+import SessionList from './displays/SessionList'
+import RaidSession from './displays/RaidSession'
 import { useState } from "react";
 import AppContext from './contexts/AppContext';
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function App() {
-  const API = "http://52.20.246.180:8080"
+  const API = "http://localhost:8080"
   const PROD ="http://52.20.246.180:8080";
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const [session, setSession] = useState('');
+  const [sessionOptions, setSessionOptions] = useState([]);
+  const [characters, setCharacters] = useState([]);
+
+
+  function getActiveSessions() {
+    fetch(`${API}/session`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => setSessionOptions(data))
+      .catch((err) => console.log(err));
+  }
+
+  function getCharacters() {
+    fetch(`${API}/characters`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => setCharacters(data))
+      .catch((err) => console.log(err));
+  }
 
 
   function NoMatch() {
@@ -32,7 +55,13 @@ function App() {
     API,
     session,
     setSession,
-    navigate
+    navigate,
+    sessionOptions,
+    setSessionOptions,
+    getActiveSessions,
+    characters,
+    setCharacters,
+    getCharacters
 
   }
 
@@ -40,7 +69,8 @@ function App() {
     <AppContext.Provider value={contextObj}>
       <Routes>
         <Route path='/' element={<FillerDisplay/>}/>
-        {/* <Route path='/sessions' element={}/> */}
+        <Route path='/sessions' element={<SessionList/>}/>
+        <Route path='/sessions/:id' element={<RaidSession />}/>
         <Route path="*" element={<NoMatch />} />
       </Routes>
 

@@ -8,9 +8,9 @@ import AppContext from '../../contexts/AppContext';
 
 
 export default function SessionSelect(){
-  let {API, setSession, session} = useContext(AppContext);
+  let {API, setSession, session, sessionOptions, setSessionOptions} = useContext(AppContext);
 
-  const [sessionOptions, setSessionOptions] = useState([]);
+
 
   const handleChange = (event) => {
     setSession(event.target.value);
