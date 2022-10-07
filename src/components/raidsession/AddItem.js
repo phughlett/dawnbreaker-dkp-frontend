@@ -3,7 +3,7 @@ import {Button, TextField} from "@mui/material"
 import AppContext from '../../contexts/AppContext';
 import SessionSelect from './SessionSelect'
 
-export default function AddItem() {
+export default function AddItem(props) {
   let {API, session} = useContext(AppContext);
 
   const [character, setCharacter] = useState('');
@@ -24,6 +24,10 @@ export default function AddItem() {
       body,
     })
       .then((response) => response.json())
+      .then((data) => {
+        props.setSessionData(data);
+
+      })
       .catch((err) => console.log(err));
   }
 

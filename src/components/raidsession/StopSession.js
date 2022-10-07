@@ -4,7 +4,7 @@ import {Button} from "@mui/material"
 import SessionSelect from './SessionSelect'
 
 export default function StopSession() {
-  let {API, session, setSession} = useContext(AppContext);
+  let {API, session, setSession, navigate} = useContext(AppContext);
 
 
   function endSession(sessionName = session) {
@@ -18,12 +18,13 @@ export default function StopSession() {
       },
       body,
     })
-      .then((response) => response.json())
-      .then(() => {
+      .then((response) => {
+        response.json()
 
       })
       .catch((err) => console.log(err));
     setSession('')
+    navigate("/")
   }
   return (
     <>

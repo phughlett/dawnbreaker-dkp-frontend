@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
 import AppContext from '../../contexts/AppContext';
-import {Button, TextField} from "@mui/material";
+import {Button, TextField, Stack} from "@mui/material";
 
 export default function StartSession() {
 
   const [sessionData, setSessionData] = useState({});
   const [instanceName, setInstanceName] = useState("");
-  let {API, setSession} = useContext(AppContext);
+  let {API, setSession, setSessionOptions} = useContext(AppContext);
 
   function initializeSession(sessionData, sessionName = instanceName) {
     let body = { sessionData, action: "CREATE", sessionName};
@@ -22,13 +22,13 @@ export default function StartSession() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setSession(sessionName)
+        setSessionOptions(data)
       })
       .catch((err) => console.log(err));
   }
   return (
-    <>
+    <Stack  spacing={.5}>
       <TextField
         onChange={(e) => setInstanceName(e.target.value)}
         label={"Session Name"}
@@ -41,6 +41,6 @@ export default function StartSession() {
       <Button onClick={() => initializeSession(sessionData)} variant="outlined">
         Start Session
       </Button>
-    </>
+    </Stack>
   );
 }

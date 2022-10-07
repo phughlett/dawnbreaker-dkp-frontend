@@ -20,10 +20,9 @@ export default function SessionTable(data){
     rows.map((session) => {
       return createData(session.id, session.name)
     })
-  },[data])
+  },[data.data])
 
   function goToSession(id){
-
 
     return(
       <>

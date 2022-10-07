@@ -27,10 +27,12 @@ export default function AddonInit(props) {
   return(
     <>
     <TextField
+    multiline={true}
     disabled
     onClick={(e) => copyText(e)}
     label={"Click to Copy"}
     value={addonInit}
+    rows={4}
     />
     <Button onClick={() => getInitString()}>Update AddonInit String</Button>
     <Typography variant="caption">{copyState}</Typography>
