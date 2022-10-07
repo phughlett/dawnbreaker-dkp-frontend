@@ -100,10 +100,9 @@ export default function RaidSession(props){
     }
     return(
     <>
-   <Button size='smiall' variant='contained' onClick={()=>postUpdate(update)}>Send Update</Button>
-   <Button size='smiall' sx={{ml:'.25rem'}} variant='contained' onClick={()=>postDelete(update)}>Delete Entry</Button>
+   <Button size='small' variant='contained' onClick={()=>postUpdate(update)}>Send Update</Button>
+   <Button size='small' sx={{ml:'.25rem'}} variant='contained' onClick={()=>postDelete(update)}>Delete Entry</Button>
     </>
-
     )
   }
   let columns = [

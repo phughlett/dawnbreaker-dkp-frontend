@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import AppContext from '../../contexts/AppContext'
-import {Button, TextField, Typography } from "@mui/material";
+import {Button, TextField, Typography, Stack } from "@mui/material";
 
 
 export default function AddonInit(props) {
@@ -25,7 +25,7 @@ export default function AddonInit(props) {
 
 
   return(
-    <>
+    <Stack>
     <TextField
     multiline={true}
     disabled
@@ -36,7 +36,7 @@ export default function AddonInit(props) {
     />
     <Button onClick={() => getInitString()}>Update AddonInit String</Button>
     <Typography variant="caption">{copyState}</Typography>
-    </>
+    </Stack>
 
   )
 }

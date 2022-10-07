@@ -2,13 +2,14 @@ import "./App.css";
 import FillerDisplay from './displays/FillerDisplay'
 import SessionList from './displays/SessionList'
 import RaidSession from './displays/RaidSession'
+import Characters from './displays/Characters'
 import Ledger from './displays/Ledger'
 import { useState } from "react";
 import AppContext from './contexts/AppContext';
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function App() {
-  const API = "http://52.20.246.180:8080"
+  const API = "http://localhost:8080"
   const PROD ="http://52.20.246.180:8080";
   const navigate = useNavigate();
 
@@ -87,6 +88,7 @@ function App() {
         <Route path='/sessions' element={<SessionList/>}/>
         <Route path='/ledger' element={<Ledger/>}/>
         <Route path='/sessions/:id' element={<RaidSession />}/>
+        <Route path='/characters' element={<Characters/>}/>
         <Route path="*" element={<NoMatch />} />
       </Routes>
 

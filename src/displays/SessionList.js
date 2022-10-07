@@ -2,6 +2,7 @@ import {useEffect, useContext} from 'react';
 import SessionTable from '../components/raidsession/SessionTable'
 import StartSession from '../components/raidsession/StartSession'
 import AddRaidTeam from '../components/raidTeam/AddRaidTeam'
+import AddonInit from '../components/addonInit/AddonInit'
 import AppContext from '../contexts/AppContext';
 import { Box, Grid } from "@mui/material";
 
@@ -24,6 +25,9 @@ export default function SessionList(){
       </Grid>
       <Grid item xs={4}>
         <AddRaidTeam/>
+      </Grid>
+      <Grid item xs={4}>
+        <AddonInit/>
       </Grid>
 
     </Grid>
