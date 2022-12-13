@@ -17,8 +17,8 @@ app.get('/*', function(req,res) {
 });
 
 
-http.createServer(app).listen(80)
-https.createServer(options, app).listen(443)
+http.createServer(app).listen(80, HOST)
+https.createServer(options, app).listen(443, HOST)
 
 
 // app.listen(PORT, HOST, () =>{
