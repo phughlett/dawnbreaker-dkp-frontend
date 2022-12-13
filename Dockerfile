@@ -10,6 +10,7 @@ COPY . /app
 RUN npm install
 RUN npm run build
 EXPOSE 80
+EXPOSE 443
 CMD ["node","server.js"]
 
 
