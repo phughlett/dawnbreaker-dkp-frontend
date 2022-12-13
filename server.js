@@ -19,7 +19,6 @@ app.get('/*', function(req,res) {
 app.get('/', function(req, res) {
   res.sendfile('./public/index.html');
 });
-server.listen(80);
 
 http.createServer(app).listen(80)
 // https.createServer(options, app).listen(443, HOST)
