@@ -1,6 +1,7 @@
-const express =require('express')
+const express = require('express')
 
 const PORT = 80;
+const HOST = 'dawnbreaker.app'
 
 
 const app = express();
@@ -14,6 +15,6 @@ app.get('/*', function(req,res) {
 
 
 
-app.listen(PORT, () =>{
+app.listen(PORT, HOST, () =>{
  console.log(`Listening on ${PORT}`)
 })
