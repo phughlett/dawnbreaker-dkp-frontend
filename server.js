@@ -16,10 +16,15 @@ app.get('/*', function(req,res) {
 });
 
 
-// http.createServer(app).listen(80, HOST)
+app.get('/', function(req, res) {
+  res.sendfile('./public/index.html');
+});
+server.listen(80);
+
+http.createServer(app).listen(80)
 // https.createServer(options, app).listen(443, HOST)
 
 
-app.listen(PORT,() =>{
- console.log(`Listening on ${PORT}`)
-})
+// app.listen(PORT,() =>{
+//  console.log(`Listening on ${PORT}`)
+// })
