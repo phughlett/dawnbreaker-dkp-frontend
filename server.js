@@ -4,7 +4,6 @@ const http = require('http')
 
 
 const PORT = 80;
-const HOST = 'dawnbreaker.app'
 
 
 const app = express();
@@ -21,6 +20,6 @@ app.get('/*', function(req,res) {
 // https.createServer(options, app).listen(443, HOST)
 
 
-app.listen(PORT, HOST, () =>{
+app.listen(PORT,() =>{
  console.log(`Listening on ${PORT}`)
 })
