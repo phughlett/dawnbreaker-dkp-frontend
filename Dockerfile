@@ -12,7 +12,7 @@ RUN npm run build
 
 # production
 FROM nginx:alpine
-COPY default.conf /etc/nginx/conf.d/default.conf
+# COPY default.conf /etc/nginx/conf.d/default.conf
 RUN apk update && apk add bash
 
 COPY --from=build /app/build /var/www/html
