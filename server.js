@@ -17,10 +17,10 @@ app.get('/*', function(req,res) {
 });
 
 
-http.createServer(app).listen(80, HOST)
-https.createServer(options, app).listen(443, HOST)
+// http.createServer(app).listen(80, HOST)
+// https.createServer(options, app).listen(443, HOST)
 
 
-// app.listen(PORT, HOST, () =>{
-//  console.log(`Listening on ${PORT}`)
-// })
+app.listen(PORT, HOST, () =>{
+ console.log(`Listening on ${PORT}`)
+})
