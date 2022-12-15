@@ -31,7 +31,7 @@ export default function AddCharacter(props) {
         if(response.ok){
           let data = await response.json()
           await getCharacters()
-          props.setSessionData
+          props.setSessionData(data)
         }else{
           let data = await response.json()
           console.log(data.data)
