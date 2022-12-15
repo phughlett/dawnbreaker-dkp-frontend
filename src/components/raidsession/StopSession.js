@@ -28,9 +28,11 @@ export default function StopSession() {
   }
   return (
     <>
-      <SessionSelect/>
       <Button onClick={() => endSession()} variant="outlined">
-        Stop Session
+        End Session
+      </Button>
+      <Button onClick={() => endSession()} color="error" variant="contained">
+        Cancel Session
       </Button>
     </>
   );

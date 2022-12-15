@@ -11,6 +11,8 @@ export default function AddItem(props) {
   const [itemName, setitemName] = useState('');
   const [dkpAmount, setdkpAmount] = useState('');
 
+  let {getS} = props;
+
 
   function addItemBid(sessionName = session) {
     let body = { character, itemId, itemName, dkpAmount, sessionName, action: "ADD_ITEM"};
@@ -23,12 +25,22 @@ export default function AddItem(props) {
       },
       body,
     })
-      .then((response) => response.json())
-      .then((data) => {
-        props.setSessionData(data);
-
+      .then(async (response) => {
+        if(response.ok){
+          let data = await response.json()
+          console.log(data)
+          props.setSessionData(data)
+        }else{
+          let data = await response.json()
+          console.log(data)
+          props.setSessionData(data.data)
+          alert(data.message)
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err)
+
+      });
   }
 
 

@@ -1,6 +1,7 @@
 import {useState, useEffect, useContext} from 'react';
 import { DataGrid  } from '@mui/x-data-grid';
 import AddItem from '../components/raidsession/AddItem'
+import AddCharacter from '../components/raidsession/AddCharacter'
 import StopSession from '../components/raidsession/StopSession'
 import { useParams } from "react-router-dom";
 import AppContext from '../contexts/AppContext'
@@ -133,13 +134,16 @@ export default function RaidSession(props){
       </Grid>
       <Grid zeroMinWidth item xs={4}>
         <Stack spacing={1.5}>
-        <AddonInit/>
+        <AddCharacter setSessionData={setSessionData}/>
         </Stack>
       </Grid>
       <Grid item xs={4}>
         <Stack spacing={1.5}>
         <StopSession/>
         </Stack>
+      </Grid>
+      <Grid item xs={12}>
+      <AddonInit/>
       </Grid>
       <Grid item xs={12}>
       <div style={{ height: 800, width: '100%' }}>
