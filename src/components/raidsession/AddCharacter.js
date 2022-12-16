@@ -31,6 +31,7 @@ export default function AddCharacter(props) {
         if(response.ok){
           let data = await response.json()
           await getCharacters()
+          console.log(data)
           props.setSessionData(data)
         }else{
           let data = await response.json()
@@ -51,7 +52,7 @@ export default function AddCharacter(props) {
 
   return (
     <>
-      <TextField required="true" onChange={(e) => setCharacter(e.target.value)} variant="outlined" label={"Add Character to Session"} />
+      <TextField required={true} onChange={(e) => setCharacter(e.target.value)} variant="outlined" label={"Add Character to Session"} />
       <Button onClick={()=>addCharacterToSession()}variant="outlined">Add Character</Button>
     </>
   );
