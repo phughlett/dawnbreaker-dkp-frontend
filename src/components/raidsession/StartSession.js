@@ -19,7 +19,15 @@ export default function StartSession() {
       },
       body,
     })
-      .then((response) => response.json())
+      .then(async (response) => {
+        if(response.ok){
+          return response.json()
+        }else{
+          let data = await response.json()
+          alert(data)
+          return []
+        }
+      })
       .then((data) => {
         setSession(sessionName)
         setSessionOptions(data)
