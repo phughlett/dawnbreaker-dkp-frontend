@@ -9,8 +9,8 @@ import AppContext from './contexts/AppContext';
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function App() {
-  // const API = "http://localhost:8080"
-  const API ="http://52.20.246.180:8080";
+  const API = "http://localhost:8080"
+  // const API ="http://52.20.246.180:8080";
   const navigate = useNavigate();
 
   const [session, setSession] = useState('');

@@ -110,7 +110,7 @@ export default function RaidSession(props){
     {field: 'id', headerName: 'ID', width: 50},
     {field: 'raid_team', headerName: 'Raid Team', width: 200},
     {field: 'character_id', headerName: 'Character', width: 200, valueGetter: value => characterNameGetter(value.value)},
-    {field: 'item', headerName: 'Item', width: 200},
+    {field: 'item', headerName: 'Item', width: 350},
     {field: 'itemId', headerName: 'Item ID', width: 75},
     {field: 'dkp', headerName: 'DKP', width: 75, editable: true},
     {field: 'created_at', headerName: 'created_at', width: 200},
@@ -147,7 +147,7 @@ export default function RaidSession(props){
       </Grid>
       <Grid item xs={12}>
       <div style={{ height: 800, width: '100%' }}>
-        <DataGrid rows={sessionData} columns={columns} initialState={{sorting: {sortModel:[{field: 'created_at', sort: 'desc'}]}}}/>
+        <DataGrid rows={sessionData} columns={columns} initialState={{sorting: {sortModel:[{field: 'id', sort: 'desc'}]}}}/>
       </div>
 
       </Grid>

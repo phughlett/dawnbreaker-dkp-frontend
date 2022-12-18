@@ -2,6 +2,13 @@ import {useState, useContext} from "react";
 import {Button, TextField} from "@mui/material"
 import AppContext from '../../contexts/AppContext';
 import SessionSelect from './SessionSelect'
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import AddCharacter from './AddCharacter'
+
 
 export default function AddItem(props) {
   let {API, session} = useContext(AppContext);
@@ -10,8 +17,17 @@ export default function AddItem(props) {
   const [itemId, setitemId] = useState('');
   const [itemName, setitemName] = useState('');
   const [dkpAmount, setdkpAmount] = useState('');
+  const [open, setOpen] = useState(false);
 
-  let {getS} = props;
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
 
 
   function addItemBid(sessionName = session) {
@@ -28,13 +44,11 @@ export default function AddItem(props) {
       .then(async (response) => {
         if(response.ok){
           let data = await response.json()
-          console.log(data)
           props.setSessionData(data)
         }else{
           let data = await response.json()
-          console.log(data)
           props.setSessionData(data.data)
-          alert(data.message)
+          handleClickOpen()
         }
       })
       .catch((err) => {
@@ -63,6 +77,18 @@ export default function AddItem(props) {
       <SessionSelect/>
       <TextField onChange={(e) => parseString(e.target.value)} variant="outlined" label={"Add Item to Session"} />
       <Button onClick={()=>addItemBid()}variant="outlined">Add Item</Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add Missing Character?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            <br></br>
+          </DialogContentText>
+          <AddCharacter setSessionData={props.setSessionData} character={character} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }

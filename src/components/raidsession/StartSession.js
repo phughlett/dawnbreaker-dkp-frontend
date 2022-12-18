@@ -12,7 +12,6 @@ export default function StartSession() {
     let body = { sessionData, action: "CREATE", sessionName};
 
     body = JSON.stringify(body);
-    console.log(body)
     fetch(`${API}/session`, {
       method: "POST",
       headers: {

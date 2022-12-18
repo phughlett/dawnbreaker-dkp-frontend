@@ -7,11 +7,8 @@ import { useParams } from "react-router-dom";
 export default function AddCharacter(props) {
 
   let {API, session, getCharacters} = useContext(AppContext);
-
-  const [character, setCharacter] = useState('');
+  const [character, setCharacter] = useState(props.character ? props.character : '');
   let { id } = useParams();
-
-
 
 
   function addCharacterToSession() {
@@ -31,11 +28,9 @@ export default function AddCharacter(props) {
         if(response.ok){
           let data = await response.json()
           await getCharacters()
-          console.log(data)
           props.setSessionData(data)
         }else{
           let data = await response.json()
-          console.log(data.data)
           props.setSessionData(data.data)
           alert(data.message)
         }
@@ -52,8 +47,8 @@ export default function AddCharacter(props) {
 
   return (
     <>
-      <TextField required={true} onChange={(e) => setCharacter(e.target.value)} variant="outlined" label={"Add Character to Session"} />
-      <Button onClick={()=>addCharacterToSession()}variant="outlined">Add Character</Button>
+      <TextField value={character} required={true} onChange={(e) => setCharacter(e.target.value)} variant="outlined" label={"Add Character to Session"} />
+      <br></br><Button onClick={()=>addCharacterToSession()}variant="outlined">Add Character</Button>
     </>
   );
 }
