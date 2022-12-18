@@ -1,18 +1,18 @@
 import { useContext, useState } from "react";
-import AppContext from '../../contexts/AppContext';
-import {Button} from "@mui/material"
-import SessionSelect from './SessionSelect'
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import AppContext from "../../contexts/AppContext";
+import { Button } from "@mui/material";
+import SessionSelect from "./SessionSelect";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 export default function StopSession() {
-  let {API, session, setSession, navigate} = useContext(AppContext);
+  let { API, session, setSession, navigate, setSessionOptions } =
+    useContext(AppContext);
 
   const [open, setOpen] = useState(false);
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,9 +24,8 @@ export default function StopSession() {
 
   const handleAgree = () => {
     setOpen(false);
-    cancelSession()
+    cancelSession();
   };
-
 
   function endSession(sessionName = session) {
     let body = { action: "CLOSE", sessionName };
@@ -39,19 +38,15 @@ export default function StopSession() {
       },
       body,
     })
-      .then((response) => {
-        response.json()
-
-      })
+      .then((response) => response.json())
+      .then((data) => setSessionOptions(data))
       .catch((err) => console.log(err));
-    setSession('')
-    navigate("/")
+    setSession("");
+    navigate("/");
   }
 
-
   function cancelSession(sessionName = session) {
-
-    handleClose()
+    handleClose();
     let body = { action: "CANCEL", sessionName };
 
     body = JSON.stringify(body);
@@ -62,13 +57,11 @@ export default function StopSession() {
       },
       body,
     })
-      .then((response) => {
-        response.json()
-
-      })
+      .then((response) => response.json())
+      .then((data) => setSessionOptions(data))
       .catch((err) => console.log(err));
-    setSession('')
-    navigate("/")
+    setSession("");
+    navigate("/");
   }
 
   return (
@@ -76,7 +69,11 @@ export default function StopSession() {
       <Button onClick={() => endSession()} variant="outlined">
         End Session
       </Button>
-      <Button onClick={() => handleClickOpen()} color="error" variant="contained">
+      <Button
+        onClick={() => handleClickOpen()}
+        color="error"
+        variant="contained"
+      >
         Cancel Session
       </Button>
       <Dialog
@@ -85,12 +82,11 @@ export default function StopSession() {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          {"Delete Session?"}
-        </DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Delete Session?"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            This will delete the session and revert DKP for any gear added to this session.
+            This will delete the session and revert DKP for any gear added to
+            this session.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
