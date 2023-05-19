@@ -71,7 +71,7 @@ export default function Ledger() {
 
   return (
     <>
-    <NavBar/>
+    <NavBar pageName={'Ledger'}/>
     <div style={{ height: 800, width: '100%' }}>
     <DataGrid rows={sessionData} columns={columns} initialState={{sorting: {sortModel:[{field: 'created_at', sort: 'desc'}]}}} />
     </div>

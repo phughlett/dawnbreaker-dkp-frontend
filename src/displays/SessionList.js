@@ -18,8 +18,7 @@ export default function SessionList(){
 
   return(
     <Box>
-    <NavBar />
-    <Typography variant='h3'>Sessions</Typography>
+    <NavBar pageName={'Sessions'}/>
     <Grid container spacing={2}>
       <Grid item xs={4}>
         <StartSession/>

@@ -25,7 +25,7 @@ export default function Home(){
 
   return(
     <>
-    <NavBar/>
+    <NavBar pageName={'Dawnbreaker DKP'}/>
     <Typography variant='h3'></Typography>
     <HomeTable characters={characters} raidTeam={"Weekday Raid"} />
     </>

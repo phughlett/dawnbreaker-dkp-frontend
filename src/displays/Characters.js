@@ -81,7 +81,7 @@ export default function Characters() {
 
   return (
     <>
-    <NavBar/>
+    <NavBar pageName={'Characters'}/>
     <div style={{ height: 800, width: '100%' }}>
     <DataGrid rows={characters} columns={columns} initialState={{sorting: {sortModel:[{field: 'raid_team', sort: 'asc'}]}}} />
     </div>
