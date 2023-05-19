@@ -13,18 +13,39 @@ export default function StopSession() {
     useContext(AppContext);
 
   const [open, setOpen] = useState(false);
+  const [dialogTitle, setDialogTitle] = useState("")
+  const [dialogDescription, setDialogDescription] = useState("");
+
+
+
+
+  const handleClickProcess = () => {
+    setOpen(true);
+    setDialogTitle("Process Session?")
+    setDialogDescription("This will process the session and apply attedance DKP from the session.");
+  }
+
+  const handleClickCancel = () => {
+    setOpen(true);
+    setDialogTitle("Cancel Session?")
+    setDialogDescription("This will delete the session and revert DKP for any gear added to this session.");
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleClose = () => {    setOpen(false);
+
   };
 
   const handleAgree = () => {
     setOpen(false);
-    cancelSession();
+    if(dialogTitle === "Cancel Session?"){
+      cancelSession()
+    }else{
+      endSession()
+    }
   };
 
   function endSession(sessionName = session) {
@@ -66,27 +87,29 @@ export default function StopSession() {
 
   return (
     <>
-      <Button onClick={() => endSession()} variant="outlined">
-        End Session
+      <Button onClick={() => handleClickProcess()} variant="contained" color="success">
+        Process Session
       </Button>
+
       <Button
-        onClick={() => handleClickOpen()}
+        onClick={() => handleClickCancel()}
         color="error"
         variant="contained"
       >
         Cancel Session
       </Button>
+
+
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Delete Session?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{dialogTitle}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            This will delete the session and revert DKP for any gear added to
-            this session.
+            {dialogDescription}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
