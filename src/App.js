@@ -10,7 +10,7 @@ import { Routes, Route, useNavigate, Link } from "react-router-dom";
 
 function App() {
   // const API = "http://localhost:8080"
-  const API ="http://18.206.94.26:8080/";
+  const API ="https://18.206.94.26:8080/";
   const navigate = useNavigate();
 
   const [session, setSession] = useState('');
