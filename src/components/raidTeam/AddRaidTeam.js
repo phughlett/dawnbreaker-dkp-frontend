@@ -29,10 +29,9 @@ export default function AddRaidTeam() {
 
   return (
     <Stack spacing={0.5}>
-      <Typography variant="h5">Create new Raid Team</Typography>
       <TextField
         onChange={(e) => setNewTeamName(e.target.value)}
-        label={"Raid Team Name"}
+        label={"Create new Raid Team"}
         value={newTeamName}
       />
       <Button onClick={() => submitNewRaidTeam(newTeamName)} variant="outlined">

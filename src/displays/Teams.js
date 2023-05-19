@@ -24,7 +24,6 @@ export default function SessionList(){
         <AddRaidTeam/>
       </Grid>
     </Grid>
-
     <RaidTeamTable data={raidTeams} navigate={navigate}/>
     </Box>
   )
