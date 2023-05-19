@@ -13,10 +13,11 @@ export default function NavBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Dawnbreaker DKP
+          <Link style={{leftMargin:'5rem', color:'white', textDecoration: 'none'}} to={'/'}>Dawnbreaker DKP</Link>
           </Typography>
           <Box sx={{ml: 1, mr:1}}><Link to={'/ledger'}>Ledger</Link></Box>
           <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/characters'}>Characters</Link></Box>
+          <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/teams'}>Teams</Link></Box>
           <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/sessions'}>Sessions</Link></Box>
           <Button color="inherit">Login</Button>
         </Toolbar>

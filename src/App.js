@@ -4,7 +4,7 @@ import SessionList from './displays/SessionList'
 import RaidSession from './displays/RaidSession'
 import Characters from './displays/Characters'
 import Home from './displays/Home'
-
+import Teams from './displays/Teams'
 import Ledger from './displays/Ledger'
 import { useState } from "react";
 import AppContext from './contexts/AppContext';
@@ -91,6 +91,7 @@ function App() {
         <Route path='/ledger' element={<Ledger/>}/>
         <Route path='/sessions/:id' element={<RaidSession />}/>
         <Route path='/characters' element={<Characters/>}/>
+        <Route path='/teams' element={<Teams/>}/>
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </AppContext.Provider>
