@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from 'react';
 import { DataGrid  } from '@mui/x-data-grid';
 import AppContext from '../contexts/AppContext'
 import { Box, Grid, Stack } from "@mui/material";
+import NavBar from '../components/appbar/NavBar'
 
 export default function Ledger() {
   let {API, characters, getCharacters, setSession, navigate,raidTeams, getRaidTeams} = useContext(AppContext);
@@ -69,8 +70,11 @@ export default function Ledger() {
 
 
   return (
+    <>
+    <NavBar/>
     <div style={{ height: 800, width: '100%' }}>
     <DataGrid rows={sessionData} columns={columns} initialState={{sorting: {sortModel:[{field: 'created_at', sort: 'desc'}]}}} />
-  </div>
+    </div>
+    </>
   );
 }

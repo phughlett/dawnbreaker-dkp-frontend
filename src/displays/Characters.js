@@ -2,6 +2,8 @@ import {useState, useEffect, useContext} from 'react';
 import { DataGrid  } from '@mui/x-data-grid';
 import AppContext from '../contexts/AppContext'
 import { Box, Grid, Stack, Button } from "@mui/material";
+import NavBar from '../components/appbar/NavBar'
+
 
 export default function Characters() {
   let {API, characters, getCharacters, setSession, navigate,raidTeams, getRaidTeams, setCharacters} = useContext(AppContext);
@@ -78,8 +80,11 @@ export default function Characters() {
 
 
   return (
+    <>
+    <NavBar/>
     <div style={{ height: 800, width: '100%' }}>
     <DataGrid rows={characters} columns={columns} initialState={{sorting: {sortModel:[{field: 'raid_team', sort: 'asc'}]}}} />
-  </div>
+    </div>
+    </>
   );
 }

@@ -2,6 +2,8 @@ import AppContext from '../contexts/AppContext'
 import {useState, useEffect, useContext} from 'react';
 import HomeTable from '../components/home/HomeTable'
 import NavBar from '../components/appbar/NavBar'
+import Typography from '@mui/material/Typography';
+
 
 export default function Home(){
 
@@ -24,7 +26,7 @@ export default function Home(){
   return(
     <>
     <NavBar/>
-    <h1>Raids</h1>
+    <Typography variant='h3'></Typography>
     <HomeTable characters={characters} raidTeam={"Weekday Raid"} />
     </>
 
