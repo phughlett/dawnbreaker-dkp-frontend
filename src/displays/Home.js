@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <NavBar pageName={"Dawnbreaker DKP"} />
-      <Grid container spacing={0}>
+      <Grid container spacing={1.5}>
         {raidTeams.map((raidTeam) => (
           <Grid item xs={3}>
             <HomeTable raidTeam={raidTeam} />
