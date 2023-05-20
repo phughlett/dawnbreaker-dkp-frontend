@@ -8,9 +8,11 @@ import AppContext from '../contexts/AppContext'
 import {Button} from "@mui/material";
 import AddonInit from '../components/addonInit/AddonInit'
 import { Box, Grid, Stack } from "@mui/material";
+import NavBar from '../components/appbar/NavBar'
+
 
 export default function RaidSession(props){
-  let {API, characters, getCharacters, setSession, navigate} = useContext(AppContext);
+  let {API, characters, getCharacters, setSession, navigate, session} = useContext(AppContext);
   const [sessionData, setSessionData] = useState([])
 
   let { id } = useParams();
@@ -124,16 +126,16 @@ export default function RaidSession(props){
 
   return(
 
-
-    <Box sx={{ margin: "5rem" }}>
+    <Box sx={{}}>
+    <NavBar pageName={`Session: ${session}`}/>
     <Grid container spacing={2}>
       <Grid item xs={4}>
-        <Stack spacing={1.5}>
+        <Stack spacing={1}>
           <AddItem setSessionData={setSessionData}/>
         </Stack>
       </Grid>
       <Grid zeroMinWidth item xs={4}>
-        <Stack spacing={1.5}>
+        <Stack spacing={1}>
         <AddCharacter setSessionData={setSessionData}/>
         </Stack>
       </Grid>

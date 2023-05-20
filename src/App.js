@@ -3,6 +3,8 @@ import FillerDisplay from './displays/FillerDisplay'
 import SessionList from './displays/SessionList'
 import RaidSession from './displays/RaidSession'
 import Characters from './displays/Characters'
+import Manual from './displays/Manual'
+
 import Home from './displays/Home'
 import Teams from './displays/Teams'
 import Ledger from './displays/Ledger'
@@ -92,6 +94,7 @@ function App() {
         <Route path='/sessions/:id' element={<RaidSession />}/>
         <Route path='/characters' element={<Characters/>}/>
         <Route path='/teams' element={<Teams/>}/>
+        <Route path='/manual' element={<Manual/>}/>
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </AppContext.Provider>

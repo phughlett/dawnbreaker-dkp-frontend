@@ -19,6 +19,7 @@ export default function NavBar({pageName}) {
           <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/characters'}>Characters</Link></Box>
           <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/teams'}>Teams</Link></Box>
           <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/sessions'}>Sessions</Link></Box>
+          <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/manual'}>Manual Upload</Link></Box>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>

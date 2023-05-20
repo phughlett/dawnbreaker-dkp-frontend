@@ -4,6 +4,7 @@ import AppContext from '../../contexts/AppContext';
 import SessionSelect from './SessionSelect'
 import { useParams } from "react-router-dom";
 
+
 export default function AddCharacter(props) {
 
   let {API, session, getCharacters} = useContext(AppContext);
@@ -48,7 +49,7 @@ export default function AddCharacter(props) {
   return (
     <>
       <TextField value={character} required={true} onChange={(e) => setCharacter(e.target.value)} variant="outlined" label={"Add Character to Session"} />
-      <br></br><Button onClick={()=>addCharacterToSession()}variant="outlined">Add Character</Button>
+      <Button onClick={()=>addCharacterToSession()}variant="outlined">Add Character</Button>
     </>
   );
 }
