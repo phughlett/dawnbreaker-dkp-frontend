@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,18 +6,36 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";
 import { Box, Typography } from "@mui/material";
+import AppContext from '../../contexts/AppContext';
 
 export default function HomeTable(data) {
-  console.log(data);
+  const [rows, setRows] = useState([]);
+  let {API, raidTeams} = useContext(AppContext);
 
-  let rows = data.characters;
+  const raid = data.raidTeam;
+
+  useEffect(() => {
+    fetch(`${API}/characters/team/${raid.id}`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        let sortedData = data.sort((a,b) => {
+          return b.dkp - a.dkp
+        })
+
+        setRows(sortedData)
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+
 
 
   return (
     <Box sx={{textAlign: 'center', maxWidth: 400}}>
-    <Typography  variant="h4">{data.raidTeam}</Typography>
+    <Typography  variant="h4">{raid.name}</Typography>
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 400, maxWidth: 400 }} aria-label="simple table">
         <TableHead>
