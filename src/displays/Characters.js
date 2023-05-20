@@ -90,8 +90,8 @@ export default function Characters() {
       valueGetter: (value) => raidTeamNameGetter(value.value),
       valueOptions: raidOptions,
     },
-    { field: "name", headerName: "Name", width: 200 },
-    { field: "dkp", headerName: "DKP", width: 75 },
+    { field: "name", headerName: "Name", width: 200, editable: true },
+    { field: "dkp", headerName: "DKP", width: 75, editable: true },
     {
       field: "characterClass",
       type: "singleSelect",
