@@ -36,8 +36,8 @@ export default function HomeTable(data) {
   return (
     <Box sx={{textAlign: 'center', maxWidth: 400}}>
     <Typography  variant="h4">{raid.name}</Typography>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 400, maxWidth: 400 }} aria-label="simple table">
+    <TableContainer align="center" component={Paper}>
+      <Table sx={{ minWidth: 50, maxWidth: 250 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center">Character</TableCell>
@@ -48,7 +48,7 @@ export default function HomeTable(data) {
           {rows.map((row) => (
             <TableRow
               key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+
             >
               <TableCell align="center" component="th" scope="row">
                 {row.name}
