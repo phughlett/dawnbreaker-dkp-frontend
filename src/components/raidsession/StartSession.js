@@ -21,6 +21,7 @@ export default function StartSession() {
     })
       .then(async (response) => {
         if(response.ok){
+          document.getElementById('initString').value = ''
           return response.json()
         }else{
           let data = await response.json()
@@ -43,6 +44,7 @@ export default function StartSession() {
       <TextField
         onChange={(e) => setSessionData(e.target.value)}
         variant="outlined"
+        id='initString'
         label={"Start Init String"}
       />
       <Button onClick={() => initializeSession(sessionData)} variant="outlined">
