@@ -45,6 +45,7 @@ export default function AddItem(props) {
         if(response.ok){
           let data = await response.json()
           props.setSessionData(data)
+          document.getElementById('itemInput').value = ''
         }else{
           let data = await response.json()
           props.setSessionData(data.data)
@@ -75,7 +76,7 @@ export default function AddItem(props) {
   return (
     <>
       <SessionSelect/>
-      <TextField onChange={(e) => parseString(e.target.value)} variant="outlined" label={"Add Item to Session"} />
+      <TextField id='itemInput' onChange={(e) => parseString(e.target.value)} variant="outlined" label={"Add Item to Session"} />
       <Button onClick={()=>addItemBid()}variant="outlined">Add Item</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Missing Character?</DialogTitle>

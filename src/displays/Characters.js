@@ -32,6 +32,7 @@ export default function Characters() {
   }
 
   function actionButtons(update) {
+
     const postUpdate = (update) => {
       let body = { update };
 
