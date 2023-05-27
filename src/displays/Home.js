@@ -1,19 +1,11 @@
 import AppContext from "../contexts/AppContext";
-import { useState, useEffect, useContext } from "react";
+import {useEffect, useContext } from "react";
 import HomeTable from "../components/home/HomeTable";
 import NavBar from "../components/appbar/NavBar";
-import Typography from "@mui/material/Typography";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 
 export default function Home() {
   let {
-    API,
-    setSession,
-    session,
-    sessionOptions,
-    setSessionOptions,
-    characters,
-    getCharacters,
     getRaidTeams,
     raidTeams,
   } = useContext(AppContext);

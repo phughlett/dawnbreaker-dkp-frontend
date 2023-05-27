@@ -4,7 +4,7 @@ import StartSession from '../components/raidsession/StartSession'
 import AddonInit from '../components/addonInit/AddonInit'
 import AppContext from '../contexts/AppContext';
 import NavBar from '../components/appbar/NavBar'
-import { Box, Grid , Typography} from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 export default function SessionList(){
 
@@ -26,9 +26,7 @@ export default function SessionList(){
       <Grid item xs={8}>
         <AddonInit/>
       </Grid>
-
     </Grid>
-
     <SessionTable data={sessionOptions} navigate={navigate}/>
     </Box>
   )
