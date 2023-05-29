@@ -3,11 +3,18 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
+import LoginButton from '../button/LoginButton'
+import LogoutButton from '../button/LogoutButton'
 import { Link } from "react-router-dom";
+import AppContext from "../../contexts/AppContext";
+import { useContext } from "react";
+
 
 export default function NavBar({pageName}) {
+
+  let { admin } = useContext(AppContext);
+
+
   return (
     <Box sx={{ flexGrow: 1, mb: 2 }}>
       <AppBar position="static">
@@ -16,10 +23,10 @@ export default function NavBar({pageName}) {
           <Link style={{leftMargin:'5rem', color:'white', textDecoration: 'none'}} to={'/'}>{pageName}</Link>
           </Typography>
           <Box sx={{ml: 1, mr:1}}><Link to={'/ledger'}>Ledger</Link></Box>
-          <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/characters'}>Characters</Link></Box>
-          <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/teams'}>Teams</Link></Box>
-          <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/sessions'}>Sessions</Link></Box>
-          <Button color="inherit">Login</Button>
+          {admin ? <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/characters'}>Characters</Link></Box> : <></>}
+          {admin ? <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/teams'}>Teams</Link></Box> : <></>}
+          {admin ?<Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/sessions'}>Sessions</Link></Box> : <></>}
+          {admin ? <LogoutButton/> : <LoginButton/>}
         </Toolbar>
       </AppBar>
     </Box>
