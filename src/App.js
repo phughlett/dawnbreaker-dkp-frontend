@@ -1,5 +1,4 @@
 import "./App.css";
-import FillerDisplay from "./displays/FillerDisplay";
 import SessionList from "./displays/SessionList";
 import RaidSession from "./displays/RaidSession";
 import Characters from "./displays/Characters";
@@ -15,8 +14,6 @@ import {
   Route,
   useNavigate,
   Link,
-  Navigate,
-  Outlet,
 } from "react-router-dom";
 
 function App() {
@@ -74,14 +71,7 @@ function App() {
     );
   }
 
-  const ProtectedRoute = ({ user, redirectPath = "/", children }) => {
-    console.log(children);
-    if (!user) {
-      return <Navigate to={redirectPath} />;
-    }
 
-    return <Outlet />;
-  };
 
   let contextObj = {
     API,
