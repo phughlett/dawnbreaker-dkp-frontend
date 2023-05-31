@@ -20,7 +20,10 @@ export default function AddonInit(props) {
   function copyText(e) {
     navigator.clipboard.writeText(e.target.value);
     setCopyState("Copied to Clipboard!");
-    setTimeout(() => setCopyState(""), 5000);
+    setTimeout(() => {
+      setCopyState("")
+      setAddonInit("")
+    }, 5000);
   }
 
 
