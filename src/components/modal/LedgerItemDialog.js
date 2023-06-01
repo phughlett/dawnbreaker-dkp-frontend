@@ -14,6 +14,10 @@ export default function LedgerItemDialog({ modalControl, dialogData, button }) {
   let { actionButton } = button;
   let disabled = title === "Delete Item";
 
+  console.log(dialogInfo)
+
+  dialogInfo.character_name = dialogInfo.character_id || dialogInfo.character_name
+
 
   const handleClose = () => {
     setOpen(false);
