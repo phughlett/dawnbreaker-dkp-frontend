@@ -9,6 +9,8 @@ import { Button } from "@mui/material";
 import AddonInit from "../components/addonInit/AddonInit";
 import { Box, Grid, Stack } from "@mui/material";
 import NavBar from "../components/appbar/NavBar";
+import DeleteButton from '../components/button/DeleteButton'
+
 
 export default function RaidSession(props) {
   let { API, characters, getCharacters, setSession, navigate, session } =
@@ -98,14 +100,7 @@ export default function RaidSession(props) {
         >
           Send Update
         </Button>
-        <Button
-          size="small"
-          sx={{ ml: ".25rem" }}
-          variant="contained"
-          onClick={() => postDelete(update)}
-        >
-          Delete Entry
-        </Button>
+        <DeleteButton buttonAction={{postDelete}} dialogInfo={update} />
       </>
     );
   }

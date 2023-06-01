@@ -17,8 +17,8 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const API = "http://localhost:8080";
-  // const API ="https://api.dawnbreaker.app:8080";
+  // const API = "http://localhost:8080";
+  const API ="https://api.dawnbreaker.app:8080";
   const navigate = useNavigate();
 
   const [session, setSession] = useState("");
