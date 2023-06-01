@@ -1,18 +1,17 @@
 import { useState, useContext } from "react";
 import AppContext from '../../contexts/AppContext';
-import {Button, TextField, Stack, Typography} from "@mui/material";
+import {Button, TextField, Stack} from "@mui/material";
 
 export default function AddRaidTeam() {
 
   const [newTeamName, setNewTeamName] = useState('')
-  let {API, setSession, setSessionOptions} = useContext(AppContext);
+  let {API} = useContext(AppContext);
 
 
   function submitNewRaidTeam(newTeamName){
     let body = { newTeamName};
 
     body = JSON.stringify(body);
-    console.log(body)
     fetch(`${API}/raidteam`, {
       method: "POST",
       headers: {

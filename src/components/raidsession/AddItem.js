@@ -64,7 +64,6 @@ export default function AddItem(props) {
     let addonItemArray = addonItemString.split(':');
     let bidInfo = addonItemArray[1];
     let bidArray = bidInfo.split(';');
-    console.log(bidArray)
     setCharacter(bidArray[0]);
     setitemId(bidArray[1]);
     setitemName(bidArray[2])
