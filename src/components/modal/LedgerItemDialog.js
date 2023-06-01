@@ -8,11 +8,13 @@ import { useContext } from "react";
 import AppContext from "../../contexts/AppContext";
 
 export default function LedgerItemDialog({ modalControl, dialogData, button }) {
-  let { characters } = useContext(AppContext);
+  let { characters, raidTeams } = useContext(AppContext);
   let { open, setOpen } = modalControl;
   let { title, dialogInfo } = dialogData;
   let { actionButton } = button;
   let disabled = title === "Delete Item";
+
+  console.log(dialogInfo)
 
   const handleClose = () => {
     setOpen(false);
@@ -28,6 +30,17 @@ export default function LedgerItemDialog({ modalControl, dialogData, button }) {
     }
    }
 
+   function raidTeamNameGetter(id){
+
+    let match = raidTeams.filter((team) => team.id === id )
+    if(match.length === 0){
+     return '';
+    }else{
+     return match[0].name;
+    }
+
+   }
+
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>{title}</DialogTitle>
@@ -41,7 +54,7 @@ export default function LedgerItemDialog({ modalControl, dialogData, button }) {
             />
             <TextField
               label={"Raid Team"}
-              defaultValue={dialogInfo.raidTeam ? dialogInfo.raid_team : ""}
+              defaultValue={dialogInfo.raid_team ? raidTeamNameGetter(dialogInfo.raid_team) : ""}
               disabled={disabled}
             />
             <TextField
@@ -58,7 +71,7 @@ export default function LedgerItemDialog({ modalControl, dialogData, button }) {
             />
             <TextField
               label={"Item ID"}
-              defaultValue={dialogInfo.itemId ? dialogInfo.itemId : ""}
+              defaultValue={dialogInfo.item ? dialogInfo.itemId : ""}
               disabled={disabled}
             />
           </Stack>
