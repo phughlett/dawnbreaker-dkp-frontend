@@ -3,6 +3,8 @@ import { DataGrid  } from '@mui/x-data-grid';
 import AppContext from '../contexts/AppContext'
 import {  Button } from "@mui/material";
 import NavBar from '../components/appbar/NavBar'
+import DeleteButton from '../components/button/DeleteButton'
+
 
 export default function Ledger() {
   let {API, characters, getCharacters, navigate, raidTeams, getRaidTeams, admin} = useContext(AppContext);
@@ -103,15 +105,7 @@ export default function Ledger() {
         >
           Send Update
         </Button>
-        <Button
-          color='error'
-          size="small"
-          sx={{ ml: ".25rem" }}
-          variant="contained"
-          onClick={() => postDelete(update)}
-        >
-          Delete Entry
-        </Button>
+        <DeleteButton buttonAction={{postDelete}} dialogInfo={update} />
       </>
     );
   }
