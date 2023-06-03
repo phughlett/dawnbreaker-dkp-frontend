@@ -1,6 +1,5 @@
-import { Button, Typography } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import { useState } from "react";
+import { Button } from "@mui/material";
+import { useState, useContext } from "react";
 import LedgerItemDialog from "../modal/LedgerItemDialog";
 
 export default function DeleteButton({ buttonAction, dialogInfo }) {
@@ -8,7 +7,7 @@ export default function DeleteButton({ buttonAction, dialogInfo }) {
 
   let { postDelete } = buttonAction;
 
-  let title = "Delete Item";
+  let title = "Delete Item?";
 
   const handleClickOpen = () => {
     setOpen(true);

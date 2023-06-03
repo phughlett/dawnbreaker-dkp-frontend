@@ -25,6 +25,8 @@ function App() {
   const [sessionOptions, setSessionOptions] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [raidTeams, setRaidTeams] = useState([]);
+  const [ledgerData, setLedgerData] = useState([]);
+
   const [admin, setAdmin] = useState(getCookie("admin"));
 
   function getActiveSessions() {
@@ -52,6 +54,25 @@ function App() {
       .then((response) => response.json())
       .then((data) => setRaidTeams(data))
       .catch((err) => console.log(err));
+  }
+
+  function getLedgerData() {
+    fetch(`${API}/ledger`, {
+      method: "GET",
+    })
+      .then((response) => {
+        if (response.status === 400) {
+          navigate("/");
+        } else {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        setLedgerData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function NoMatch() {
@@ -89,6 +110,9 @@ function App() {
     getRaidTeams,
     admin,
     setAdmin,
+    ledgerData,
+    setLedgerData,
+    getLedgerData
   };
 
   return (
