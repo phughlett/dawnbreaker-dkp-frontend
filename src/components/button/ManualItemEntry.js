@@ -82,6 +82,7 @@ export default function ManualItemEntry() {
                 label={"Item ID"}
                 defaultValue={itemId}
                 onChange={(e) => setItemId(e.target.value)}
+                type="number"
               />
               <TextField
                 label={"DKP Amount"}
