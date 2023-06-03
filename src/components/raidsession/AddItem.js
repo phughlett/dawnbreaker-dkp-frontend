@@ -25,6 +25,10 @@ export default function AddItem(props) {
 
   const handleClose = () => {
     setOpen(false);
+    setCharacter('')
+    setitemId('')
+    setitemName('')
+    setdkpAmount('')
   };
 
 
@@ -46,6 +50,7 @@ export default function AddItem(props) {
           let data = await response.json()
           props.setSessionData(data)
           document.getElementById('itemInput').value = ''
+          handleClose()
         }else{
           let data = await response.json()
           props.setSessionData(data.data)

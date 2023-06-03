@@ -28,6 +28,7 @@ export default function AddCharacter(props) {
     .then(async (response) => {
         if(response.ok){
           let data = await response.json()
+          setCharacter('')
           await getCharacters()
           props.setSessionData(data)
         }else{
