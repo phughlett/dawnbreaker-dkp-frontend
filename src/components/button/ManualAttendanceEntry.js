@@ -28,8 +28,6 @@ export default function ManualAttendanceEntry() {
     setOpen(false);
     setRaidTeam('')
     setCharacter('')
-    setItem('')
-    setItemId('')
     setDkp('')
   }
 
@@ -84,6 +82,7 @@ export default function ManualAttendanceEntry() {
                 label={"DKP Amount"}
                 defaultValue={dkp}
                 onChange={(e) => setDkp(e.target.value)}
+                type="number"
               />
             </Stack>
           </DialogContentText>

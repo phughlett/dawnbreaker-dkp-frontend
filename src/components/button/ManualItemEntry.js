@@ -88,6 +88,7 @@ export default function ManualItemEntry() {
                 label={"DKP Amount"}
                 defaultValue={dkp}
                 onChange={(e) => setDkp(e.target.value)}
+                type="number"
               />
             </Stack>
           </DialogContentText>
