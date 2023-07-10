@@ -38,10 +38,12 @@ export default function HomeTable(data) {
       fetchData()
     }, 15000)
 
-      return () => clearInterval(interval);
+    fetchData()
+
+    return () => clearInterval(interval);
 
 
-  }, [rows]);
+  }, []);
 
 
 
