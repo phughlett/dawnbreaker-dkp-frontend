@@ -11,24 +11,41 @@ import AppContext from '../../contexts/AppContext';
 
 export default function HomeTable(data) {
   const [rows, setRows] = useState([]);
+  const [update, setUpdate] = useState(false)
   let {API, raidTeams} = useContext(AppContext);
-
   const raid = data.raidTeam;
 
-  useEffect(() => {
-    fetch(`${API}/characters/team/${raid.id}`, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        let sortedData = data.sort((a,b) => {
-          return b.dkp - a.dkp
-        })
 
-        setRows(sortedData)
+
+  useEffect(() => {
+
+    const fetchData = () => {
+      fetch(`${API}/characters/team/${raid.id}`, {
+        method: "GET",
       })
-      .catch((err) => console.log(err));
-  }, []);
+        .then((response) => response.json())
+        .then((data) => {
+          let sortedData = data.sort((a,b) => {
+            return b.dkp - a.dkp
+          })
+
+          setRows(sortedData)
+        })
+        .catch((err) => console.log(err));
+
+    }
+    const interval = setInterval(() => {
+      fetchData()
+    }, 15000)
+
+      return () => clearInterval(interval);
+
+
+  }, [rows]);
+
+
+
+
 
 
 
