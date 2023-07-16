@@ -26,7 +26,7 @@ export default function NavBar({pageName}) {
           {admin ? <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/characters'}>Characters</Link></Box> : <></>}
           {admin ? <Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/teams'}>Teams</Link></Box> : <></>}
           {admin ?<Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/sessions'}>Sessions</Link></Box> : <></>}
-          {admin ?<Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/admin'}>Admin</Link></Box> : <></>}
+          {/* {admin ?<Box sx={{ml: 1, mr:1}}><Link style={{leftMargin:'5rem'}} to={'/admin'}>Admin</Link></Box> : <></>} */}
           {admin ? <LogoutButton/> : <LoginButton/>}
         </Toolbar>
       </AppBar>

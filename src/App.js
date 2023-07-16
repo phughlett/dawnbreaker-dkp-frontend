@@ -124,7 +124,7 @@ function App() {
         {admin ? <Route path="/sessions/:id" element={<RaidSession />} /> : <></>}
         {admin ? <Route path="/characters" element={<Characters />} /> : <></>}
         {admin ? <Route path="/teams" element={<Teams />} /> : <></>}
-        {/* {admin ? <Route path="/admin" element={<Manual />} /> : <></>} */}
+        {admin ? <Route path="/admin" element={<Manual />} /> : <></>}
         <Route path="/ledger" element={<Ledger />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
