@@ -38,10 +38,10 @@ export default function PersonalPage(props) {
           let data = await response.json();
 
           let itemsWonArray = data.filter((entry) => entry.itemId !== 0);
-          itemsWonArray.reverse()
+          // itemsWonArray.reverse()
           setItemsWon(itemsWonArray);
           let dkpEarned = data.filter((entry) => entry.itemId === 0);
-          dkpEarned.reverse()
+          // dkpEarned.reverse()
           setdkpEarned(dkpEarned);
         } else {
           setCharFound(false);
