@@ -39,7 +39,8 @@ export default function AddCharacter(props) {
       })
     .catch((err) => {
         console.log(err)
-      });  }
+      });
+    }
 
 
 

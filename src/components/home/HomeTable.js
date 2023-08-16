@@ -12,7 +12,8 @@ import AppContext from '../../contexts/AppContext';
 export default function HomeTable(data) {
   const [rows, setRows] = useState([]);
   const [update, setUpdate] = useState(false)
-  let {API, raidTeams} = useContext(AppContext);
+  const [hover, setHover] = useState(false)
+  let {API, raidTeams, navigate} = useContext(AppContext);
   const raid = data.raidTeam;
 
 
@@ -45,18 +46,19 @@ export default function HomeTable(data) {
 
   }, []);
 
-
-
-
-
-
+  const navigateOnClick = (charName) => {
+    navigate(`/${charName}`)
+  }
 
 
   return (
     <Box sx={{textAlign: 'center', maxWidth: 400}}>
     <Typography  variant="h4">{raid.name}</Typography>
     <TableContainer align="center" component={Paper}>
-      <Table sx={{ minWidth: 50, maxWidth: 250 }} aria-label="simple table">
+      <Table sx={{ minWidth: 50, maxWidth: 250, "& .MuiTableRow-root:hover": {
+      backgroundColor: "#FEFD98",
+      cursor: 'pointer'
+    } }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center">Character</TableCell>
@@ -67,7 +69,7 @@ export default function HomeTable(data) {
           {rows.map((row) => (
             <TableRow
               key={row.name}
-
+              onClick={() => navigateOnClick(row.name)}
             >
               <TableCell align="center" component="th" scope="row">
                 {row.name}

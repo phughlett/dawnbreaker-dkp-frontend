@@ -3,29 +3,29 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
 
-export default function EventCard(cardData){
+export default function EventCard(props){
 
-  let {character, itemName, itemId, dkpAmount} = cardData;
+  let {character, cardData} = props;
 
-  character = "Thaco";
-  itemName = "Scepter of Lost Souls";
-  itemId = "45511";
-  dkpAmount = "1";
+  let created = new Date(cardData.created_at);
+  let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
+  let date = created.toLocaleDateString('en-US', options)
 
-  let url = `https://wowhead.com/wotlk/item=${itemId}`;
+
+  let url = `https://wowhead.com/wotlk/item=${cardData.itemId}`;
 
 
 
   return(
-    <Card sx={{ minWidth: 275, maxWidth: 275, textAlign: "center" }}>
+    <Card sx={{textAlign: "center"}}>
       <CardContent sx={{contentAlign: 'center'}}>
         <Typography variant="h5" component="div">
-          {character}
+          {date}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          DKP Spent: {dkpAmount}
+          DKP Spent: {cardData.dkp}
         </Typography>
-        <a href={url} target="_blank" rel="noopener noreferrer">{itemName}</a>
+        <a href={url} target="_blank" rel="noopener noreferrer">{cardData.item}</a>
       </CardContent>
     </Card>
   )

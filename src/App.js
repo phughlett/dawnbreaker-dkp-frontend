@@ -1,12 +1,13 @@
 import "./App.css";
 import SessionList from "./displays/SessionList";
 import RaidSession from "./displays/RaidSession";
+import PersonalPage from "./displays/PersonalPage";
 import Characters from "./displays/Characters";
 import Manual from "./displays/Manual";
 import Home from "./displays/Home";
 import Teams from "./displays/Teams";
 import Ledger from "./displays/Ledger";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AppContext from "./contexts/AppContext";
 import getCookie from "./helperFunctions/helperFunctions.js";
 import {
@@ -28,6 +29,12 @@ function App() {
   const [ledgerData, setLedgerData] = useState([]);
 
   const [admin, setAdmin] = useState(getCookie("admin"));
+
+
+  useEffect(() => {
+    getCharacters()
+    getRaidTeams()
+  }, []);
 
   function getActiveSessions() {
     fetch(`${API}/session`, {
@@ -75,13 +82,14 @@ function App() {
       });
   }
 
-
-  function NoMatch() {
+  const NoMatch = () => {
     const linkStyle = {
       color: "#61dafb",
       margin: "1em",
-    };
+    }
+
     return (
+
       <div className="App-header">
         <h2>You must be lost!</h2>
         <p>
@@ -90,8 +98,14 @@ function App() {
           </Link>
         </p>
       </div>
+
     );
   }
+
+
+
+
+
 
 
 
@@ -113,7 +127,8 @@ function App() {
     setAdmin,
     ledgerData,
     setLedgerData,
-    getLedgerData
+    getLedgerData,
+    NoMatch
   };
 
   return (
@@ -126,6 +141,7 @@ function App() {
         {admin ? <Route path="/teams" element={<Teams />} /> : <></>}
         {admin ? <Route path="/admin" element={<Manual />} /> : <></>}
         <Route path="/ledger" element={<Ledger />} />
+        {characters.map((char) =><Route key={`${char.name}`} path={`/${char.name}`} element={<PersonalPage character={char} />} />)}
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </AppContext.Provider>
