@@ -15,8 +15,6 @@ export default function PersonalPage(props) {
 
   let { API, raidTeams } = useContext(AppContext);
 
-  console.log(character);
-
   useEffect(() => {
     getCharacterLedgerData();
     if(character.raid_team){
@@ -38,10 +36,8 @@ export default function PersonalPage(props) {
           let data = await response.json();
 
           let itemsWonArray = data.filter((entry) => entry.itemId !== 0);
-          // itemsWonArray.reverse()
           setItemsWon(itemsWonArray);
           let dkpEarned = data.filter((entry) => entry.itemId === 0);
-          // dkpEarned.reverse()
           setdkpEarned(dkpEarned);
         } else {
           setCharFound(false);
@@ -54,7 +50,6 @@ export default function PersonalPage(props) {
 
   const displayRaidTeamName = () => {
     let raidTeamName = raidTeams.find((team) => team.id === character.raid_team)
-    console.log(raidTeamName)
     setRaidTeamName(raidTeamName.name + ' Raid')
   }
 
