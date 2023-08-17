@@ -57,7 +57,7 @@ export default function PersonalPage(props) {
     <>
       <NavBar pageName={`${character.name}`} />
       <Box sx={{ flexGrow: 1, p: 4 }}>
-        <Grid justifyContent="flex-start" container spacing={0.5}>
+        <Grid justifyContent="flex-start" container spacing={0.75}>
           <Grid item xs={12} sm={6}>
             <Box sx={{textAlign: 'center', maxHeight: 440}}>
             <Stack direction="column" alignContent="center" spacing={2}>
@@ -79,7 +79,7 @@ export default function PersonalPage(props) {
             <DKPEarnedTable dkpGain={dkpEarned} />
           </Grid>
           {itemsWon.reverse().map((item) => (
-            <Grid item xs={12} sm={6} md={3} lg={2} xl={2}>
+            <Grid item xs={12} sm={6} md={3} lg={3} xl={2}>
               <EventCard character={character} cardData={item} />
             </Grid>
           ))}
