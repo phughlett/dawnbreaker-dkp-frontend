@@ -52,6 +52,7 @@ export default function AddItem(props) {
           document.getElementById('itemInput').value = ''
           handleClose()
         }else{
+          //need to clean this up for bad statuses
           let data = await response.json()
           props.setSessionData(data.data)
           handleClickOpen()

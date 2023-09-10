@@ -18,6 +18,7 @@ export default function AddonInit(props) {
   }
 
   function copyText(e) {
+    console.log('click')
     navigator.clipboard.writeText(e.target.value);
     setCopyState("Copied to Clipboard!");
     setTimeout(() => {
@@ -31,7 +32,7 @@ export default function AddonInit(props) {
     <Stack>
     <TextField
     multiline={true}
-    disabled
+    readOnly
     onClick={(e) => copyText(e)}
     label={"Click to Copy"}
     value={addonInit}
