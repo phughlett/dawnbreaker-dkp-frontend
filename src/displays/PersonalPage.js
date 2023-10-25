@@ -35,6 +35,10 @@ export default function PersonalPage(props) {
           setCharFound(true);
           let data = await response.json();
 
+          data = data.sort((a,b) => {
+            return new Date(b.created_at) - new Date(a.created_at)
+          })
+
           let itemsWonArray = data.filter((entry) => entry.itemId !== 0);
           setItemsWon(itemsWonArray);
           let dkpEarned = data.filter((entry) => entry.itemId === 0);
@@ -78,7 +82,7 @@ export default function PersonalPage(props) {
           <Grid item xs={12} sm={6}>
             <DKPEarnedTable dkpGain={dkpEarned} />
           </Grid>
-          {itemsWon.reverse().map((item) => (
+          {itemsWon.map((item) => (
             <Grid item xs={12} sm={6} md={3} lg={3} xl={2}>
               <EventCard character={character} cardData={item} />
             </Grid>

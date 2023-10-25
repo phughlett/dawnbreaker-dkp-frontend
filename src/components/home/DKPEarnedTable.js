@@ -10,10 +10,8 @@ import { Box, Typography } from "@mui/material";
 import AppContext from '../../contexts/AppContext';
 
 export default function DKPEarnedTable(data) {
-  const rows = data.dkpGain.sort((a,b) => {
-    return new Date(b.created_at) - new Date(a.created_at)
-  })
-  console.log(rows)
+  const rows = data.dkpGain
+
 
   function formatDate(date){
     let created = new Date(date);
