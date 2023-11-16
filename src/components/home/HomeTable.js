@@ -56,7 +56,7 @@ export default function HomeTable(data) {
     <Typography  variant="h4">{raid.name}</Typography>
     <TableContainer align="center" component={Paper}>
       <Table sx={{ minWidth: 50, maxWidth: 250, "& .MuiTableRow-root:hover": {
-      backgroundColor: "#FEFD98",
+      backgroundColor: "rgba(255, 255, 255, 0.08)",
       cursor: 'pointer'
     } }} aria-label="simple table">
         <TableHead>

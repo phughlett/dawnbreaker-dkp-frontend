@@ -1,4 +1,6 @@
 import "./App.css";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import SessionList from "./displays/SessionList";
 import RaidSession from "./displays/RaidSession";
 import PersonalPage from "./displays/PersonalPage";
@@ -35,6 +37,12 @@ function App() {
     getCharacters()
     getRaidTeams()
   }, []);
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
 
   function getActiveSessions() {
     fetch(`${API}/session`, {
@@ -132,6 +140,8 @@ function App() {
   };
 
   return (
+    <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
     <AppContext.Provider value={contextObj}>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -145,6 +155,7 @@ function App() {
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </AppContext.Provider>
+    </ThemeProvider>
   );
 }
 
