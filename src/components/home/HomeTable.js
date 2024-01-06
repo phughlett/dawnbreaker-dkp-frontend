@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box, Typography } from "@mui/material";
 import AppContext from "../../contexts/AppContext";
-import { useTheme } from "@mui/styles";
+import { useTheme } from "@mui/material/styles";
 
 export default function HomeTable(data) {
   const theme = useTheme();
