@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import LedgerItemDialog from "../modal/LedgerItemDialog";
 
 export default function DeleteButton({ buttonAction, dialogInfo }) {

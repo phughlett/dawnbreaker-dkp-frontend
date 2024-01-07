@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import AppContext from "../contexts/AppContext";
-import { Box, Grid, Stack, Button } from "@mui/material";
+import { Grid, Stack, Button } from "@mui/material";
 import NavBar from "../components/appbar/NavBar";
 
 export default function Characters() {

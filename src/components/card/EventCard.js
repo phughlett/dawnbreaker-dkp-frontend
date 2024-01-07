@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 
 export default function EventCard(props) {
-  let { character, cardData } = props;
+  let { cardData } = props;
 
   let created = new Date(cardData.created_at);
   let options = {
