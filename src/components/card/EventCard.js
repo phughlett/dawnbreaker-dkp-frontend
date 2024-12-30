@@ -14,7 +14,7 @@ export default function EventCard(props) {
   };
   let date = created.toLocaleDateString("en-US", options);
 
-  let url = `https://wowhead.com/wotlk/item=${cardData.itemId}`;
+  let url = `https://wowhead.com/classic/item=${cardData.itemId}`;
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none'}}>
