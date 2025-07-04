@@ -117,7 +117,7 @@ export default function Manual() {
       </Button>
       <br></br>
       <Typography sx={{mt: 4}} variant="h3">DKP Squish</Typography>
-      <TextField label="Squish %" defaultValue="80" onChange={(e) => handleSquishChange(e)} endAdornment={<InputAdornment position="end">%</InputAdornment>}/>
+      <TextField label="Squish %" defaultValue="80" type="number" onChange={(e) => handleSquishChange(e)} endAdornment={<InputAdornment position="end">%</InputAdornment>}/>
       <Button variant="outlined" onClick={(e) => handleSquishSubmit(e)}>
         {" "}
         DKP Squish
