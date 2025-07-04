@@ -12,7 +12,7 @@ export default function SessionList(){
 
   useEffect(()=>{
     getRaidTeams();
-  },[])
+  },[raidTeams])
 
 
 

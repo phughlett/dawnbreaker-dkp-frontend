@@ -2,11 +2,12 @@ import AppContext from "../contexts/AppContext";
 import { useState, useEffect, useContext } from "react";
 import HomeTable from "../components/home/HomeTable";
 import NavBar from "../components/appbar/NavBar";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, TextField, InputAdornment } from "@mui/material";
 
 export default function Manual() {
   const [file, setFile] = useState();
   const [fileSet, setFileSet] = useState(false);
+  const [squishAmount, setSquishAmount] = useState(80);
 
   let {
     API,
@@ -24,6 +25,11 @@ export default function Manual() {
     e.preventDefault();
     console.log(e.target.files[0]);
     setFile(e.target.files[0]);
+  }
+
+  function handleSquishChange(e){
+    e.preventDefault();
+    setSquishAmount(e.target.value);
   }
 
   async function handleSubmit(e) {
@@ -76,11 +82,17 @@ export default function Manual() {
   function handleSquishSubmit(event){
     event.preventDefault()
 
+    let body = {squishAmount};
+    body = JSON.stringify(body);
+
+
+
     fetch(`${API}/admin/squish`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      body,
     })
       .then(async (response) => {
         if (response.ok) {
@@ -105,6 +117,7 @@ export default function Manual() {
       </Button>
       <br></br>
       <Typography sx={{mt: 4}} variant="h3">DKP Squish</Typography>
+      <TextField label="Squish %" defaultValue="80" onChange={(e) => handleSquishChange(e)} endAdornment={<InputAdornment position="end">%</InputAdornment>}/>
       <Button variant="outlined" onClick={(e) => handleSquishSubmit(e)}>
         {" "}
         DKP Squish
