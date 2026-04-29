@@ -21,7 +21,7 @@ import {
 
 function App() {
 
-  const API = "https://api.dawnbreaker.app:8080";
+  const API = "https://www.dawnbreaker.app/api";
   const navigate = useNavigate();
 
   const [session, setSession] = useState("");
